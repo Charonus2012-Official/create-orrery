@@ -1,0 +1,15 @@
+{
+  "required": true,
+  "minVersion": "0.8",
+  "package": "net.charonus2012.eris.mixin",
+  "compatibilityLevel": "JAVA_21",
+  "mixins": [
+    "NorthstarPlanetsMixin",
+    "LivingEntityGravityMixin",
+    "ErisExtraGravityMixin",
+    "ErisSkyMixin"
+  ],
+  "injectors": {
+    "defaultRequire": 1
+  }
+}

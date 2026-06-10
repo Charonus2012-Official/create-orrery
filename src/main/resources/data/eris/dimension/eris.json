@@ -1,0 +1,11 @@
+{
+  "type": "eris:eris",
+  "generator": {
+    "type": "minecraft:noise",
+    "settings": "eris:eris",
+    "biome_source": {
+      "type": "minecraft:fixed",
+      "biome": "eris:eris_surface"
+    }
+  }
+}

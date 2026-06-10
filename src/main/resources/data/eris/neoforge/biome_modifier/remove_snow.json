@@ -1,0 +1,6 @@
+{
+  "type": "neoforge:remove_features",
+  "biomes": ["eris:eris_surface"],
+  "features": ["minecraft:freeze_top_layer"],
+  "steps": [ "top_layer_modification" ]
+}
