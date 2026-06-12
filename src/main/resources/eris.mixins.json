@@ -4,10 +4,11 @@
   "package": "net.charonus2012.eris.mixin",
   "compatibilityLevel": "JAVA_21",
   "mixins": [
-    "NorthstarPlanetsMixin",
-    "LivingEntityGravityMixin",
     "ErisExtraGravityMixin",
-    "ErisSkyMixin"
+    "ErisFallDamageMixin",
+    "ErisSkyMixin",
+    "LivingEntityGravityMixin",
+    "NorthstarPlanetsMixin"
   ],
   "injectors": {
     "defaultRequire": 1
