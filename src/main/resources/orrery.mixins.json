@@ -1,0 +1,15 @@
+{
+  "required": true,
+  "minVersion": "0.8",
+  "package": "net.charonus2012.orrery.mixin",
+  "compatibilityLevel": "JAVA_21",
+  "mixins": [
+    "PlanetFallDamageMixin",
+    "PlanetSkyMixin",
+    "NorthstarPlanetsMixin",
+    "TelescopeScreenMixin"
+  ],
+  "injectors": {
+    "defaultRequire": 1
+  }
+}

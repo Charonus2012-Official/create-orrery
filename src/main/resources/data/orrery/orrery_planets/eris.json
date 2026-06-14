@@ -1,0 +1,22 @@
+{
+  "dimension": "orrery:eris",
+  "planet_name": "eris",
+  "gravity": 0.084,
+  "has_oxygen": false,
+  "temperature": -230,
+  "atmosphere_cost": 0,
+  "computing_cost": 900,
+  "engine_constant": 15.0,
+  "sun_multiplier": 0.0,
+  "has_sky": true,
+  "can_see_sky_at_day": true,
+  "has_weather": false,
+  "seed_offset": 9,
+  "is_in_orbit": true,
+  "wind_multiplier": 0.0,
+  "sky": {
+    "has_stars": true,
+    "star_brightness": 1.0,
+    "sun_brightness": 0.6
+  }
+}
