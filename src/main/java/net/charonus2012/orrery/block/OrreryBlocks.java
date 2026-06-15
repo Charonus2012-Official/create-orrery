@@ -1,10 +1,12 @@
 package net.charonus2012.orrery.block;
 
+import net.charonus2012.orrery.block.custom.OrrerySand;
 import net.charonus2012.orrery.item.OrreryItems;
 import net.minecraft.world.item.BlockItem;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.Blocks;
+import net.minecraft.world.level.block.FallingBlock;
 import net.minecraft.world.level.block.state.BlockBehaviour;
 import net.neoforged.bus.api.IEventBus;
 import net.neoforged.neoforge.registries.DeferredBlock;
@@ -30,7 +32,7 @@ public class OrreryBlocks {
                 () -> new Block(BlockBehaviour.Properties.of().strength(1.5f, 6.0f).requiresCorrectToolForDrops())));
 
         blocks.put("sand", registerBlock(planetName + "_sand",
-                () -> new Block(BlockBehaviour.Properties.ofFullCopy(Blocks.SAND).strength(0.5f))));
+                () -> new OrrerySand(BlockBehaviour.Properties.ofFullCopy(Blocks.SAND).strength(0.5f))));
 
         for (String ore : ores) {
             String key = ore + "_ore";

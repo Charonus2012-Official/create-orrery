@@ -5,8 +5,12 @@ import net.charonus2012.orrery.command.PlanetCommands;
 import net.charonus2012.orrery.item.OrreryCreativeModeTabs;
 import net.charonus2012.orrery.item.OrreryItems;
 import net.charonus2012.orrery.planet.PlanetDataLoader;
+import net.minecraft.core.registries.Registries;
+import net.minecraft.world.level.levelgen.feature.ConfiguredFeature;
+import net.minecraft.world.level.levelgen.placement.PlacedFeature;
 import net.neoforged.neoforge.event.AddReloadListenerEvent;
 import net.neoforged.neoforge.event.RegisterCommandsEvent;
+import net.neoforged.neoforge.registries.DataPackRegistryEvent;
 import org.slf4j.Logger;
 
 import com.mojang.logging.LogUtils;

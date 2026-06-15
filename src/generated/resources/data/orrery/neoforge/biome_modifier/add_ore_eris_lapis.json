@@ -1,0 +1,6 @@
+{
+  "type": "neoforge:add_features",
+  "biomes": "orrery:eris_surface",
+  "features": "orrery:ore_eris_lapis",
+  "step": "underground_ores"
+}

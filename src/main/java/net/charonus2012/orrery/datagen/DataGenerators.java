@@ -40,5 +40,7 @@ public class DataGenerators {
 
         generator.addProvider(event.includeServer(), new LootTableProvider(output, Collections.emptySet(),
                 List.of(new LootTableProvider.SubProviderEntry(OrreryBlockLootTableProvider::new, LootContextParamSets.BLOCK)), lookupProvider));
+
+        generator.addProvider(event.includeServer(), new OrreryDatapackProvider(output, lookupProvider));
     }
 }

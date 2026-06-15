@@ -5,7 +5,7 @@
   "ore_veins_enabled": false,
   "legacy_random_source": false,
   "spawn_target": [],
-  "default_block": { "Name": "minecraft:stone" },
+  "default_block": { "Name": "orrery:eris_stone" },
   "default_fluid": { "Name": "minecraft:air" },
   "noise": {
     "height": 256,
@@ -140,7 +140,7 @@
               },
               "then_run": {
                 "type": "minecraft:block",
-                "result_state": { "Name": "northstar:moon_sand" }
+                "result_state": { "Name": "orrery:eris_sand" }
               }
             }
           ]
@@ -148,7 +148,7 @@
       },
       {
         "type": "minecraft:block",
-        "result_state": { "Name": "minecraft:stone" }
+        "result_state": { "Name": "orrery:eris_stone" }
       }
     ]
   }
