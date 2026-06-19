@@ -9,13 +9,12 @@
   "engine_constant": 15.0,
   "sun_multiplier": 0.0,
   "has_sky": true,
-  "can_see_sky_at_day": true,
   "has_weather": false,
   "seed_offset": 9,
-  "is_in_orbit": true,
   "wind_multiplier": 0.0,
   "sky": {
     "has_stars": true,
+    "can_see_sky_at_day": true,
     "star_brightness": 1.0,
     "sun_brightness": 0.6
   }

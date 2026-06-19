@@ -13,6 +13,20 @@
     "orrery:eris_glowstone_ore",
     "orrery:eris_emerald_ore",
     "orrery:eris_titanium_ore",
-    "orrery:eris_quartz_ore"
+    "orrery:eris_quartz_ore",
+    "orrery:pluto_copper_ore",
+    "orrery:pluto_gold_ore",
+    "orrery:pluto_redstone_ore",
+    "orrery:pluto_diamond_ore",
+    "orrery:pluto_iron_ore",
+    "orrery:pluto_tungsten_ore",
+    "orrery:pluto_stone",
+    "orrery:pluto_lapis_ore",
+    "orrery:pluto_zinc_ore",
+    "orrery:pluto_coal_ore",
+    "orrery:pluto_glowstone_ore",
+    "orrery:pluto_emerald_ore",
+    "orrery:pluto_titanium_ore",
+    "orrery:pluto_quartz_ore"
   ]
 }

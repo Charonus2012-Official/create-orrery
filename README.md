@@ -2,8 +2,6 @@
 
 A data-driven planet framework for [Create: Northstar Redux](https://github.com/Astronauts-of-Create/Northstar-Redux), adding new explorable worlds to your Create space-exploration experience.
 
-Orrery extends Northstar's planet system so that new celestial bodies — dwarf planets, moons, and beyond — can be added largely through JSON datapacks rather than custom Java/Mixin code for each one.
-
 ## Requirements
 
 - Minecraft 1.21.1
@@ -11,56 +9,52 @@ Orrery extends Northstar's planet system so that new celestial bodies — dwarf 
 - [Create](https://www.curseforge.com/minecraft/mc-mods/create) 6.0.10+
 - [Create: Northstar Redux](https://modrinth.com/mod/northstar-redux) 0.5.4+1.21.1+
 
-## Currently Implemented
+## Planets
+
+### Pluto
+
+The most famous dwarf planet, sitting on the inner edge of the Kuiper Belt. Pluto's surface is a frozen expanse of nitrogen ice and dark reddish sand, broken by gentle rolling hills.
+
+- Very low gravity (~0.063g)
+- No oxygen — life support required
+- Custom sky: stars always visible, Sun reduced to a bright point of light
+- Surface of snow and pluto sand over stone
+- Full ore set with overlay textures shared with Northstar
 
 ### Eris
 
-The dwarf planet Eris, one of the most distant known objects in the scattered disc, is now a landable dimension.
+The most massive known dwarf planet, drifting far out in the scattered disc. Eris is a desolate, airless world with a faint and distant Sun barely brighter than a star.
 
-- Custom black, star-filled sky with a dimmed, distant Sun (no atmospheric scattering)
-- Surface composed of moon sand over stone, brightened/tinted for a distinct look
 - Greatly reduced gravity (~0.084g), with fall damage scaled accordingly
-- No native oxygen — electrolysis-based life support recommended
-- AE2 meteorite generation, with all other structures (igloos, villages, etc.) disabled
-- Appears correctly in the Northstar Telescope, including a fix for Pluto's rendering position bug
+- No oxygen — life support required
+- Custom sky: stars always visible, heavily dimmed Sun
+- Surface of moon sand over stone
+- Full ore set with overlay textures shared with Northstar
 
-### Eris Ores
+## How It Works
 
-A full ore set for Eris, sharing overlay textures with Northstar's existing materials.
+Orrery is built around a data-driven planet registry. Each planet is described by a JSON file that Minecraft loads at runtime — meaning new planets can be added through datapacks without writing any new Java code for standard cases.
 
-## Planned
+**The core pieces:**
 
-Orrery's planet framework is built to scale. Future planets, moons, and dwarf planets are planned, including (subject to change):
+- `PlanetData` — a record holding a planet's gravity, temperature, atmosphere cost, sky appearance, and other properties
+- `PlanetRegistry` — an in-memory map of all loaded planets, keyed by dimension
+- `PlanetDataLoader` — a resource reload listener that reads `PlanetData` from `data/<namespace>/orrery_planets/<planet>.json`
 
-- **Pluto** — full landable implementation (currently only a telescope entry via Northstar)
-- **Ceres** — largest object in the asteroid belt
-- Various moons of the outer planets
-- Additional dwarf planets and Kuiper Belt objects
+Generic mixins for sky rendering, fall damage, and Northstar's planet-property hooks all read from this registry. Adding a new standard planet means:
 
-Each new body will reuse the same data-driven planet system described below, minimizing the amount of custom code required per planet.
+1. A dimension, biome, and worldgen JSON (standard Minecraft datapack format)
+2. An `orrery_planets` JSON for gravity, sky, and other properties
+3. A block set registration for the planet's stone, sand, and ores
 
-## The Planet Framework
+No new mixins or Java code needed unless the planet has truly novel mechanics.
 
-At the core of Orrery is a data-driven planet registry:
-
-- **`PlanetData`** — a record describing a planet's gravity, temperature, atmosphere, sky appearance (stars, sun brightness), orbital properties, and more
-- **`PlanetRegistry`** — an in-memory registry of all loaded planets, keyed by dimension
-- **`PlanetDataLoader`** — a resource reload listener that loads `PlanetData` from datapack JSON files at `data/<namespace>/orrery_planets/<planet>.json`
-
-Generic Mixins (sky rendering, fall damage, and Northstar's planet-property hooks) read from this registry, so a new planet can be added by:
-
-1. Creating a dimension + biome + worldgen JSON (standard Minecraft datapack format)
-2. Adding a `PlanetData` JSON describing its gravity, sky, and other properties
-3. Registering a block set (stone/sand/ores) via the block framework, if the planet needs unique materials
-
-No new Mixins are required for standard planets — only truly novel mechanics need custom code.
-
-### Example `orrery_planets` entry
+### Planet JSON format
 
 ```json
 {
   "dimension": "orrery:eris",
-  "planet_name": "eris",
+  "planet_name": "Eris",
   "gravity": 0.084,
   "has_oxygen": false,
   "temperature": -230,
@@ -68,14 +62,13 @@ No new Mixins are required for standard planets — only truly novel mechanics n
   "computing_cost": 900,
   "engine_constant": 15.0,
   "sun_multiplier": 0.0,
-  "has_sky": true,
-  "can_see_sky_at_day": true,
   "has_weather": false,
   "seed_offset": 9,
-  "is_in_orbit": true,
   "wind_multiplier": 0.0,
+  "has_sky": true,
   "sky": {
     "has_stars": true,
+    "can_see_sky_at_day": true,
     "star_brightness": 1.0,
     "sun_brightness": 0.6
   }
@@ -84,36 +77,29 @@ No new Mixins are required for standard planets — only truly novel mechanics n
 
 ## Commands
 
-- `/orrery` — lists all currently loaded planets and their key properties (gravity, dimension key, etc.)
+`/orrery` — lists all currently loaded planets and their key properties.
 
-## Building from Source
+## Building
 
 ```
 ./gradlew build
 ```
-
-Run the client/server dev environment with:
 
 ```
 ./gradlew runClient
 ./gradlew runServer
 ```
 
-Generate data (block states, models, language, tags, loot tables) with:
+Generate data (block states, models, language, tags, loot tables):
 
 ```
 ./gradlew runData
 ```
 
-## Documentation
-
-A full wiki covering the planet datapack format, block set generation, and contribution guidelines is in progress.
-
 ## Credits
 
-- Built on top of [Create](https://github.com/Creators-of-Create/Create) and [Create: Northstar Redux](https://github.com/Astronauts-of-Create/Northstar-Redux)
-- Ore overlay textures adapted from Northstar Redux
+Built on top of [Create](https://github.com/Creators-of-Create/Create) and [Create: Northstar Redux](https://github.com/Astronauts-of-Create/Northstar-Redux). Ore overlay textures adapted from Northstar Redux.
 
 ## License
 
-MIT License, visit `LICENSE` for full license.
+MIT — see `LICENSE`.

@@ -1,0 +1,7 @@
+{
+  "parent": "orrery:block/ore_overlay",
+  "textures": {
+    "all": "orrery:block/pluto_stone",
+    "overlay": "orrery:block/overlays/z_coal_overlay"
+  }
+}

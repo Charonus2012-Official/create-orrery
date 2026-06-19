@@ -16,14 +16,13 @@ public record PlanetData(
         int computingCost,
         double engineConstant,
         float sunMultiplier,
-        boolean hasSky,
-        boolean canSeeSkyAtDay,
         boolean hasWeather,
         long seedOffset,
-        boolean isInOrbit,
         float windMultiplier,
         // sky rendering
+        boolean hasSky,
         boolean hasStars,
+        boolean canSeeSkyAtDay,
         float starBrightness,
         float sunBrightness
 ) {
@@ -37,24 +36,21 @@ public record PlanetData(
             Codec.INT.fieldOf("computing_cost").forGetter(PlanetData::computingCost),
             Codec.DOUBLE.fieldOf("engine_constant").forGetter(PlanetData::engineConstant),
             Codec.FLOAT.fieldOf("sun_multiplier").forGetter(PlanetData::sunMultiplier),
-            Codec.BOOL.fieldOf("has_sky").forGetter(PlanetData::hasSky),
-            Codec.BOOL.fieldOf("can_see_sky_at_day").forGetter(PlanetData::canSeeSkyAtDay),
             Codec.BOOL.fieldOf("has_weather").forGetter(PlanetData::hasWeather),
             Codec.LONG.fieldOf("seed_offset").forGetter(PlanetData::seedOffset),
-            Codec.BOOL.fieldOf("is_in_orbit").forGetter(PlanetData::isInOrbit),
             Codec.FLOAT.fieldOf("wind_multiplier").forGetter(PlanetData::windMultiplier),
-            PlanetData.SkyData.CODEC.fieldOf("sky").forGetter(p -> new SkyData(p.hasStars(), p.starBrightness(), p.sunBrightness()))
-    ).apply(instance, (dimension, planetName, gravity, hasOxygen, temperature, atmosphereCost, computingCost, engineConstant, sunMultiplier, hasSky, canSeeSkyAtDay, hasWeather, seedOffset, isInOrbit, windMultiplier, sky) ->
-            new PlanetData(dimension, planetName, gravity, hasOxygen, temperature, atmosphereCost, computingCost, engineConstant, sunMultiplier, hasSky, canSeeSkyAtDay, hasWeather, seedOffset, isInOrbit, windMultiplier, sky.hasStars(), sky.starBrightness(), sky.sunBrightness())
+            Codec.BOOL.fieldOf("has_sky").forGetter(PlanetData::hasSky),
+            PlanetData.SkyData.CODEC.fieldOf("sky").forGetter(p -> new SkyData(p.hasStars(), p.canSeeSkyAtDay(), p.starBrightness(), p.sunBrightness()))
+    ).apply(instance, (dimension, planetName, gravity, hasOxygen, temperature, atmosphereCost, computingCost, engineConstant, sunMultiplier, hasWeather, seedOffset, windMultiplier, hasSky, sky) ->
+            new PlanetData(dimension, planetName, gravity, hasOxygen, temperature, atmosphereCost, computingCost, engineConstant, sunMultiplier, hasWeather, seedOffset, windMultiplier, hasSky, sky.hasStars(), sky.seeAtDay(), sky.starBrightness(), sky.sunBrightness())
     ));
 
-    private record SkyData(boolean hasStars, float starBrightness, float sunBrightness) {
-    static final Codec<SkyData> CODEC = RecordCodecBuilder.create(instance -> instance.group(
-        Codec.BOOL.fieldOf("has_stars").forGetter(SkyData::hasStars),
-        Codec.FLOAT.fieldOf("star_brightness").forGetter(SkyData::starBrightness),
-        Codec.FLOAT.fieldOf("sun_brightness").forGetter(SkyData::sunBrightness)
-    ).apply(instance, SkyData::new));
+    private record SkyData(boolean hasStars, boolean seeAtDay, float starBrightness, float sunBrightness) {
+        static final Codec<SkyData> CODEC = RecordCodecBuilder.create(instance -> instance.group(
+                Codec.BOOL.fieldOf("has_stars").forGetter(SkyData::hasStars),
+                Codec.BOOL.fieldOf("can_see_sky_at_day").forGetter(SkyData::seeAtDay),
+                Codec.FLOAT.fieldOf("star_brightness").forGetter(SkyData::starBrightness),
+                Codec.FLOAT.fieldOf("sun_brightness").forGetter(SkyData::sunBrightness)
+        ).apply(instance, SkyData::new));
+    }
 }
-}
-
-

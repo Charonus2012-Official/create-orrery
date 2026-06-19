@@ -1,6 +1,6 @@
 {
   "type": "neoforge:remove_features",
-  "biomes": ["orrery:eris_surface"],
+  "biomes": ["orrery:eris_surface", "orrery:pluto_surface"],
   "features": ["minecraft:freeze_top_layer"],
   "steps": [ "top_layer_modification" ]
 }

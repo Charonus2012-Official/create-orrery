@@ -98,7 +98,9 @@ public class NorthstarPlanetsMixin {
 
     @Inject(method = "isInOrbit", at = @At("HEAD"), cancellable = true, remap = false)
     private static void isInOrbit(ResourceKey<Level> level, CallbackInfoReturnable<Boolean> cir) {
-        PlanetRegistry.get(level).ifPresent(p -> cir.setReturnValue(p.isInOrbit()));
+        if (PlanetRegistry.isPlanet(level)) {
+            cir.setReturnValue(true);
+        }
     }
 
     @Inject(method = "getWindMultiplier", at = @At("HEAD"), cancellable = true, remap = false)

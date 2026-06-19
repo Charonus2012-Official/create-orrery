@@ -40,6 +40,8 @@ public class OrreryMod {
 
         modEventBus.addListener(this::addCreative);
 
+        // Planet BlockSets Definitions
+        OrreryBlocks.registerPlanetBlockSet("pluto", List.of("coal", "copper", "diamond", "emerald", "glowstone", "gold", "iron", "lapis", "quartz", "redstone", "titanium", "tungsten", "zinc"));
         OrreryBlocks.registerPlanetBlockSet("eris", List.of("coal", "copper", "diamond", "emerald", "glowstone", "gold", "iron", "lapis", "quartz", "redstone", "titanium", "tungsten", "zinc"));
 
         OrreryBlocks.register(modEventBus);

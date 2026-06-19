@@ -2,6 +2,9 @@
   "values": [
     "orrery:eris_redstone_ore",
     "orrery:eris_iron_ore",
-    "orrery:eris_lapis_ore"
+    "orrery:eris_lapis_ore",
+    "orrery:pluto_redstone_ore",
+    "orrery:pluto_iron_ore",
+    "orrery:pluto_lapis_ore"
   ]
 }

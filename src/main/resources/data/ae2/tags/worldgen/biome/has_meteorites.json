@@ -1,6 +1,7 @@
 {
   "replace": false,
   "values": [
-    "orrery:eris_surface"
+    "orrery:eris_surface",
+    "orrery:pluto_surface"
   ]
 }

@@ -1,0 +1,11 @@
+{
+  "type": "orrery:pluto",
+  "generator": {
+    "type": "minecraft:noise",
+    "settings": "orrery:pluto",
+    "biome_source": {
+      "type": "minecraft:fixed",
+      "biome": "orrery:pluto_surface"
+    }
+  }
+}

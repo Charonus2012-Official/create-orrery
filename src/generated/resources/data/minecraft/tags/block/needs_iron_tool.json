@@ -4,6 +4,11 @@
     "orrery:eris_diamond_ore",
     "orrery:eris_zinc_ore",
     "orrery:eris_emerald_ore",
-    "orrery:eris_quartz_ore"
+    "orrery:eris_quartz_ore",
+    "orrery:pluto_gold_ore",
+    "orrery:pluto_diamond_ore",
+    "orrery:pluto_zinc_ore",
+    "orrery:pluto_emerald_ore",
+    "orrery:pluto_quartz_ore"
   ]
 }

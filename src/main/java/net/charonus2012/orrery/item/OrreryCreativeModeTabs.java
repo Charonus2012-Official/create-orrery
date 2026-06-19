@@ -19,7 +19,7 @@ public class OrreryCreativeModeTabs {
     public static final DeferredHolder<CreativeModeTab, CreativeModeTab> ORRERY_TAB =
             CREATIVE_MODE_TAB.register("orrery_tab", () -> CreativeModeTab.builder()
                     .title(Component.translatable("creativetab.orrery.blocks"))
-                    .icon(() -> new ItemStack(OrreryBlocks.PLANET_BLOCKS.get("eris").get("glowstone_ore").get()))
+                    .icon(() -> new ItemStack(OrreryBlocks.PLANET_BLOCKS.get("pluto").get("redstone_ore").get()))
                     .displayItems((parameters, output) -> {
                         for (var planetEntry : OrreryBlocks.PLANET_BLOCKS.entrySet()) {
                             for (var blockEntry : planetEntry.getValue().entrySet()) {
