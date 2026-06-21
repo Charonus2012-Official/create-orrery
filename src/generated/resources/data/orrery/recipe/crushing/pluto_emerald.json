@@ -1,0 +1,26 @@
+{
+  "type": "create:crushing",
+  "ingredients": [
+    {
+      "item": "orrery:pluto_emerald_ore"
+    }
+  ],
+  "processingTime": 250,
+  "results": [
+    {
+      "id": "minecraft:emerald"
+    },
+    {
+      "chance": 0.75,
+      "id": "minecraft:emerald"
+    },
+    {
+      "chance": 0.5,
+      "id": "create:experience_nugget"
+    },
+    {
+      "chance": 0.12,
+      "id": "orrery:pluto_stone"
+    }
+  ]
+}

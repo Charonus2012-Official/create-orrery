@@ -1,0 +1,27 @@
+{
+  "type": "create:crushing",
+  "ingredients": [
+    {
+      "item": "orrery:eris_glowstone_ore"
+    }
+  ],
+  "processingTime": 250,
+  "results": [
+    {
+      "count": 2,
+      "id": "northstar:raw_glowstone_ore"
+    },
+    {
+      "chance": 0.75,
+      "id": "northstar:raw_glowstone_ore"
+    },
+    {
+      "chance": 0.5,
+      "id": "create:experience_nugget"
+    },
+    {
+      "chance": 0.12,
+      "id": "orrery:eris_stone"
+    }
+  ]
+}

@@ -32,8 +32,11 @@ public class DataGenerators {
         generator.addProvider(event.includeClient(),
                 new OrreryLanguageProvider(output));
 
-        generator.addProvider(event.includeServer(),
+        OrreryBlockTagProvider blockTagProvider = generator.addProvider(event.includeServer(),
                 new OrreryBlockTagProvider(output, event.getLookupProvider(), existingFileHelper));
+
+        generator.addProvider(event.includeServer(),
+                new OrreryItemTagProvider(output, event.getLookupProvider(), blockTagProvider.contentsGetter(), existingFileHelper));
 
         generator.addProvider(event.includeClient(),
                 new OrreryItemModelProvider(output, existingFileHelper));
@@ -42,5 +45,9 @@ public class DataGenerators {
                 List.of(new LootTableProvider.SubProviderEntry(OrreryBlockLootTableProvider::new, LootContextParamSets.BLOCK)), lookupProvider));
 
         generator.addProvider(event.includeServer(), new OrreryDatapackProvider(output, lookupProvider));
+
+        generator.addProvider(event.includeServer(), new OrreryRecipeProvider(output, lookupProvider));
+
+        generator.addProvider(event.includeServer(), new OrreryCrushingRecipeProvider(output));
     }
 }

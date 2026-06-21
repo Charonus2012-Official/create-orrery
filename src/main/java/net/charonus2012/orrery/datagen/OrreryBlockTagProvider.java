@@ -1,6 +1,7 @@
 package net.charonus2012.orrery.datagen;
 
 import net.charonus2012.orrery.block.OrreryBlocks;
+import net.charonus2012.orrery.util.OrreryTags;
 import net.minecraft.core.HolderLookup;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.data.PackOutput;
@@ -30,6 +31,7 @@ public class OrreryBlockTagProvider extends BlockTagsProvider {
         List<String> stone = List.of("iron", "lapis", "redstone");
 
         for (var planetEntry : OrreryBlocks.PLANET_BLOCKS.entrySet()) {
+            String planetName = planetEntry.getKey();
             for (var entry : planetEntry.getValue().entrySet()) {
                 String key = entry.getKey();
                 Block block = entry.getValue().get();
@@ -39,6 +41,9 @@ public class OrreryBlockTagProvider extends BlockTagsProvider {
                     String oreType = key.replace("_ore", "");
                     tag(BlockTags.MINEABLE_WITH_PICKAXE).add(block);
                     tag(Tags.Blocks.ORES).add(block);
+
+                    tag(OrreryTags.Blocks.createTag(planetName + "_ores")).add(block);
+                    tag(OrreryTags.Blocks.createTag(oreType + "_ores")).add(block);
 
                     if (!basic.contains(oreType)) {
                         if (stone.contains(oreType)) {

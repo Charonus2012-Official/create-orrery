@@ -16,6 +16,6 @@
     "has_stars": true,
     "can_see_sky_at_day": true,
     "star_brightness": 1.0,
-    "sun_brightness": 0.05
+    "sun_brightness": 0.7
   }
 }
